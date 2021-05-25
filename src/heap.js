@@ -32,8 +32,13 @@ class Heap {
 
   // 弹出堆顶元素
   pop() {
+    if (this.heap.length === 1) {
+      return this.heap.pop();
+    }
+    const temp = this.heap[0];
     this.heap[0] = this.heap.pop();
     this.sink();
+    return temp;
   }
 
   // 上浮
@@ -67,13 +72,13 @@ class Heap {
   }
 }
 
-class MinHeap extends Heap {
+export class MinHeap extends Heap {
   compare(i, j) {
     return this.heap[i] < this.heap[j]; // <就是小根堆 >就是大根堆
   }
 }
 
-class MaxHeap extends Heap {
+export class MaxHeap extends Heap {
   compare(i, j) {
     return this.heap[i] > this.heap[j]; // <就是小根堆 >就是大根堆
   }

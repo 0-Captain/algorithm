@@ -1,0 +1,40 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "本仓库中包含了常见的数据结构与算法的 js 实现",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx src",
+    "prettier": "prettier --write .",
+    "commit": "git-cz",
+    "prepare": "npx husky install"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^12.1.4",
+    "babel-eslint": "^10.1.0",
+    "commitlint": "^12.1.4",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "git-cz": "^4.7.6",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "src/**/*.{js,ts,tsx}": [
+      "eslint --cache --fix"
+    ]
+  }
+}
