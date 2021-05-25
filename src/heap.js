@@ -14,8 +14,8 @@
  */
 
 class Heap {
-  heap = [];
   constructor(size) {
+    this.heap = [];
     this.size = size;
     // if (!this.compare) {
     //   throw new Error("please implement method: compare");
@@ -44,7 +44,7 @@ class Heap {
   // 上浮
   swim(k = this.heap.length - 1) {
     let parentIndex;
-    while (k > 0 && this.compare((parentIndex = (k - 1) >> 1), k)) {
+    while (k > 0 && this.compare(k, (parentIndex = (k - 1) >> 1))) {
       this.swap(parentIndex, k);
       k = parentIndex;
     }
