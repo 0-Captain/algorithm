@@ -1,4 +1,4 @@
-import { minHeapSort, maxHeapSort } from "../src/heapSort";
+import { minHeapSort, maxHeapSort } from "../src/sort/heapSort";
 import { generateArray } from "./utils";
 
 const testData = new Array(20).fill(generateArray(100));

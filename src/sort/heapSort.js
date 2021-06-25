@@ -1,4 +1,4 @@
-import { MinHeap, MaxHeap } from "./heap.js";
+import { MinHeap, MaxHeap } from "../priorityQueue/heap.js";
 
 export function minHeapSort(array) {
   const minHeap = new MinHeap(array.length);
