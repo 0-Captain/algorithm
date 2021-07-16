@@ -1,4 +1,5 @@
-import UnionFind from "../src/unionFind/qucikFind";
+import QuickFind from "../src/unionFind/qucikFind";
+import QuickUnion from "../src/unionFind/quickUnion.js";
 
 const connectData = {
   size: 10,
@@ -15,13 +16,24 @@ const connectData = {
     [1, 0],
     [6, 7],
   ],
-  answer: [1, 1, 1, 8, 8, 1, 1, 1, 8, 8],
+  answer: {
+    quickFind: [1, 1, 1, 8, 8, 1, 1, 1, 8, 8],
+    quickUnion: [1, 1, 1, 8, 3, 0, 5, 1, 8, 8],
+  },
 };
 
-test("测试并查集", () => {
-  const uf = new UnionFind(connectData.size);
+test("测试并查集: quick-find", () => {
+  const uf = new QuickFind(connectData.size);
   connectData.data.forEach((item) => {
     uf.union(...item);
   });
-  expect(uf.id).toEqual(connectData.answer);
+  expect(uf.id).toEqual(connectData.answer.quickFind);
+});
+
+test("测试并查集: quick-union", () => {
+  const uf = new QuickUnion(connectData.size);
+  connectData.data.forEach((item) => {
+    uf.union(...item);
+  });
+  expect(uf.id).toEqual(connectData.answer.quickUnion);
 });
