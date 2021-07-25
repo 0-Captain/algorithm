@@ -1,6 +1,7 @@
 import QuickFind from "../src/unionFind/qucikFind";
 import QuickUnion from "../src/unionFind/quickUnion.js";
 import WeightedQuickUnion from "../src/unionFind/weightedQuickUnion";
+import CompressPathWeightedQuickUnion from "../src/unionFind/compressPathWQU";
 
 const connectData = {
   size: 10,
@@ -21,6 +22,7 @@ const connectData = {
     quickFind: [1, 1, 1, 8, 8, 1, 1, 1, 8, 8],
     quickUnion: [1, 1, 1, 8, 3, 0, 5, 1, 8, 8],
     weightedQuickUnion: [6, 2, 6, 4, 4, 6, 6, 2, 4, 4],
+    CompressPath: [6, 6, 6, 4, 4, 6, 6, 6, 4, 4],
   },
 };
 
@@ -46,4 +48,12 @@ test("测试并查集: weighted-quick-union", () => {
     uf.union(...item);
   });
   expect(uf.id).toEqual(connectData.answer.weightedQuickUnion);
+});
+
+test("测试并查集: compress-path-weighted-quick-union", () => {
+  const uf = new CompressPathWeightedQuickUnion(connectData.size);
+  connectData.data.forEach((item) => {
+    uf.union(...item);
+  });
+  expect(uf.id).toEqual(connectData.answer.CompressPath);
 });

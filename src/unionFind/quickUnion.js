@@ -13,7 +13,6 @@ class UnionFind {
 
   union(a, b) {
     this.id[this.find(a)] = this.id[this.find(b)];
-    console.log(this.id);
   }
 
   connect(a, b) {

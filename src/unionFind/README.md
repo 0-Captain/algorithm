@@ -22,7 +22,7 @@
 因为在查询元素所属集合的时候直接可以找到，即 id[x]，所以成为 quick-find。此时时间复杂度
 
 - find: O(1)
-- union: O(n)
+- union: O(N)
 
 #### quick-union
 
@@ -32,7 +32,22 @@
 
 时间复杂度：
 
-- find: O(n)
-- union: O(n)
+- find: O(N)
+- union: O(N)
 
-看起来 quick-union 算法的在 union 过程中的时间复杂度与 quick-find 算法相同，但是 quick-find 算法的 union 时间复杂度不管输入情况如何都是 O(n),而 quick-union 算法在最坏情况下才是 O(n), 所以平均时间复杂度要低于 quick-find
+看起来 quick-union 算法的在 union 过程中的时间复杂度与 quick-find 算法相同，但是 quick-find 算法的 union 时间复杂度不管输入情况如何都是 O(n), 而 quick-union 算法在最坏情况下才是 O(n), 所以平均时间复杂度要低于 quick-find。
+
+### weighted-quick-union
+
+quick-union 算法在实现过程中经常会将树的高度搞得很大，最坏情况下为 n，此时 find 操作会非常昂贵，这也是 quick-union 算法无法直接用来处理大数据量的问题所在。实际上，如果在选择谁作为父节点的时候将大树作为父节点就可以将整个树的最大高度限制住 lg N，这样一来就可以大幅提高 quick-find 算法的性能，所付出的代价是多了一个记录树高度的长度为 N 的数组。
+
+- find: O(lg N)
+- union: O(lg N)
+
+### 最优算法
+
+至今为止都无法找到可以在常数时间内完成 union-find 操作的算法。目前的最优算法为：路径压缩的 weighted-quick-union 算法。
+
+#### 路经压缩
+
+理想情况下希望每个节点都直接连接到跟节点，但是又不想像 quick-find 算法一样直接遍历数组，此时可以在 find 方法查询时将查询过程中遇到的深层节点扁平化。

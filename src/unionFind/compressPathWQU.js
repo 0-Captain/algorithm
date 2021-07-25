@@ -1,14 +1,14 @@
-class WeightedQuickUnion {
+class CompressPathWeightedQuickUnion {
   constructor(size) {
     this.id = new Array(size).fill(0).map((_i, index) => index);
     this.sizeCount = new Array(size).fill(1);
   }
 
   find(a) {
-    while (this.id[a] != a) {
-      a = this.id[a];
+    while (this.id[a] != this.id[this.id[a]]) {
+      this.id[a] = this.find(this.id[a]);
     }
-    return a;
+    return this.id[a];
   }
 
   union(a, b) {
@@ -27,4 +27,4 @@ class WeightedQuickUnion {
   }
 }
 
-export default WeightedQuickUnion;
+export default CompressPathWeightedQuickUnion;
