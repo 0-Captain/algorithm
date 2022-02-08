@@ -13,3 +13,17 @@ export function toBinary(arr, x) {
       .join("");
   });
 }
+
+/**
+ * @description: 数组 -> countMap
+ * @param {*} Array
+ * @return {*} countMap
+ */
+export function getCountMap(arr) {
+  const map = {};
+  for (let i = 0; i < arr.length; i++) {
+    const cur = arr[i];
+    map[cur] = (map[cur] || 0) + 1;
+  }
+  return map;
+}

@@ -14,6 +14,9 @@ export function maxHeapSort(array) {
   array.forEach((item) => {
     maxHeap.insert(item);
   });
-  // 从大到小
-  return new Array(array.length).fill(0).map(() => maxHeap.pop());
+  // 从小到大
+  return new Array(array.length)
+    .fill(0)
+    .map(() => maxHeap.pop())
+    .reverse();
 }

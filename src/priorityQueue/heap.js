@@ -54,7 +54,8 @@ class Heap {
   sink(k = 0) {
     let child;
     while ((child = 2 * k + 1) < this.heap.length) {
-      if (this.compare(child + 1, child)) child++;
+      if (child + 1 < this.heap.length && this.compare(child + 1, child))
+        child++;
       if (this.compare(k, child)) break;
       this.swap(k, child);
       k = child;
