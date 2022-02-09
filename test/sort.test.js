@@ -3,6 +3,7 @@ import { minHeapSort, maxHeapSort } from "../src/sort/heapSort";
 import { selection } from "../src/sort/selection";
 import { insertionSort } from "../src/sort/insertion";
 import { shellSort } from "../src/sort/shellSort";
+import { mergeSort } from "../src/sort/mergeSort";
 
 const testData = new Array(20).fill(generateArray(20));
 
@@ -12,6 +13,7 @@ const sortAlgorithmMap = {
   selection,
   insertionSort,
   shellSort,
+  mergeSort,
 };
 
 for (let [key, sort] of Object.entries(sortAlgorithmMap)) {
@@ -19,7 +21,7 @@ for (let [key, sort] of Object.entries(sortAlgorithmMap)) {
     for (let arr of testData) {
       // 从小到大
       const standrad = [...arr].sort((a, b) => a - b);
-      const answer = sort(arr);
+      const answer = sort([...arr]);
       expect(answer.join()).toEqual(standrad.join());
     }
   });
