@@ -4,8 +4,9 @@ import { selection } from "../src/sort/selection";
 import { insertionSort } from "../src/sort/insertion";
 import { shellSort } from "../src/sort/shellSort";
 import { mergeSort } from "../src/sort/mergeSort";
+import { quickSort } from "../src/sort/quickSort";
 
-const testData = new Array(20).fill(generateArray(20));
+const testData = new Array(100).fill(0).map(() => generateArray(1000));
 
 const sortAlgorithmMap = {
   minHeapSort,
@@ -14,6 +15,7 @@ const sortAlgorithmMap = {
   insertionSort,
   shellSort,
   mergeSort,
+  quickSort,
 };
 
 for (let [key, sort] of Object.entries(sortAlgorithmMap)) {
