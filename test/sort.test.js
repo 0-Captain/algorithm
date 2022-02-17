@@ -1,5 +1,5 @@
 import { generateArray } from "./utils";
-import { minHeapSort, maxHeapSort } from "../src/sort/heapSort";
+import { heapSort } from "../src/sort/heapSort";
 import { selection } from "../src/sort/selection";
 import { insertionSort } from "../src/sort/insertion";
 import { shellSort } from "../src/sort/shellSort";
@@ -11,8 +11,7 @@ const testData = new Array(10)
   .map(() => generateArray(Math.ceil(Math.random() * 10000)));
 
 const sortAlgorithmMap = {
-  minHeapSort,
-  maxHeapSort,
+  heapSort,
   selection,
   insertionSort,
   shellSort,
